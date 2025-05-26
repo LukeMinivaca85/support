@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Suporte Lukintosh</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background: #f0f5ff;
+    color: #1a1a1a;
+  }
+  header {
+    background-color: #003d99;
+    color: white;
+    padding: 1.5rem 2rem;
+    text-align: center;
+  }
+  h1 {
+    margin: 0;
+    font-weight: 700;
+  }
+  main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  section {
+    margin-bottom: 2.5rem;
+  }
+  h2 {
+    color: #003d99;
+    border-bottom: 2px solid #003d99;
+    padding-bottom: 0.3rem;
+  }
+  details {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+  }
+  details summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+  details[open] {
+    background-color: #e6f0ff;
+  }
+  form {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+  }
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    margin-top: 0.3rem;
+    border: 1.5px solid #003d99;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #005ce6;
+    background: #f0f5ff;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  button {
+    margin-top: 1.5rem;
+    background-color: #003d99;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #005ce6;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    margin: 3rem 0 1rem 0;
+  }
+  a {
+    color: #003d99;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Suporte Lukintosh</h1>
+  <p>Estamos aqui para ajudar você!</p>
+</header>
+
+<main>
+  <section>
+    <h2>Perguntas Frequentes</h2>
+    <details>
+      <summary>Como posso criar uma conta Lukintosh?</summary>
+      <p>Você pode criar uma conta acessando <a href="https://accounts.lukintosh.com">accounts.lukintosh.com</a> e seguindo as instruções de cadastro.</p>
+    </details>
+    <details>
+      <summary>Como faço para baixar jogos no Lukintosh Store?</summary>
+      <p>Após criar sua conta, acesse <a href="https://store.lukintosh.com">store.lukintosh.com</a>, faça login e escolha o jogo que deseja baixar.</p>
+    </details>
+    <details>
+      <summary>Posso usar a Lukintosh Play Engine para criar jogos comerciais?</summary>
+      <p>Sim! A Lukintosh Play Engine é totalmente liberada para uso comercial e pessoal. Consulte nossa documentação para detalhes de licença.</p>
+    </details>
+  </section>
+
+  <section>
+    <h2>Contato</h2>
+    <form>
+      <label for="name">Nome Completo</label>
+      <input type="text" id="name" name="name" placeholder="Seu nome" required />
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+
+      <label for="message">Mensagem</label>
+      <textarea id="message" name="message" placeholder="Escreva sua dúvida ou sugestão" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Lukintosh Corporation — Todos os direitos reservados
+</footer>
+</body>
+</html>
