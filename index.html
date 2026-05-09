@@ -1,161 +1,1087 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Suporte Lukintosh</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-<style>
-  body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    background: #f0f5ff;
-    color: #1a1a1a;
-  }
-  header {
-    background-color: #003d99;
-    color: white;
-    padding: 1.5rem 2rem;
-    text-align: center;
-  }
-  h1 {
-    margin: 0;
-    font-weight: 700;
-  }
-  main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-  section {
-    margin-bottom: 2.5rem;
-  }
-  h2 {
-    color: #003d99;
-    border-bottom: 2px solid #003d99;
-    padding-bottom: 0.3rem;
-  }
-  details {
-    background: white;
-    border-radius: 6px;
-    padding: 1rem 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
-  }
-  details summary {
-    font-weight: 600;
-    cursor: pointer;
-  }
-  details[open] {
-    background-color: #e6f0ff;
-  }
-  form {
-    background: white;
-    padding: 1.5rem 2rem;
-    border-radius: 6px;
-    box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
-  }
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: 600;
-  }
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 0.6rem 0.8rem;
-    margin-top: 0.3rem;
-    border: 1.5px solid #003d99;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-    transition: border-color 0.3s;
-  }
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  textarea:focus {
-    outline: none;
-    border-color: #005ce6;
-    background: #f0f5ff;
-  }
-  textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  button {
-    margin-top: 1.5rem;
-    background-color: #003d99;
-    color: white;
-    border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  button:hover {
-    background-color: #005ce6;
-  }
-  footer {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #555;
-    margin: 3rem 0 1rem 0;
-  }
-  a {
-    color: #003d99;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lukintosh Support Center — suporte oficial, segurança, status, contas, produtos e recursos corporativos." />
+  <meta name="theme-color" content="#050505" />
+  <title>Lukintosh Support</title>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0c0c0f;
+      --card: rgba(255, 255, 255, 0.055);
+      --card-strong: rgba(255, 255, 255, 0.09);
+      --text: #f5f5f7;
+      --muted: #a1a1aa;
+      --line: rgba(255, 255, 255, 0.12);
+      --line-soft: rgba(255, 255, 255, 0.075);
+      --accent: #ffffff;
+      --accent-2: #8ab4ff;
+      --danger: #ff6464;
+      --success: #61d394;
+      --warning: #ffd166;
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% -10%, rgba(72, 119, 255, 0.28), transparent 34%),
+        radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(64, 224, 208, 0.10), transparent 36%),
+        linear-gradient(180deg, #050505 0%, #08080a 48%, #030303 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      background: rgba(5, 5, 5, 0.64);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 36px));
+      height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.95), rgba(255,255,255,.28)),
+        radial-gradient(circle at 25% 20%, #ffffff, #8ab4ff 45%, #222 100%);
+      box-shadow: 0 0 40px rgba(138, 180, 255, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mark::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 9px;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+    }
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-title strong {
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title span {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: rgba(245,245,247,.72);
+      font-size: 13px;
+    }
+
+    .navlinks a {
+      transition: color .2s ease;
+    }
+
+    .navlinks a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      cursor: pointer;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.095);
+      border-color: rgba(255,255,255,.22);
+    }
+
+    .pill.primary {
+      background: #f5f5f7;
+      color: #050505;
+      border-color: #f5f5f7;
+      font-weight: 650;
+    }
+
+    .hero {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 86px 0 52px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: max-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: rgba(245,245,247,.82);
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--line-soft);
+      font-size: 12px;
+      margin-bottom: 24px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 18px rgba(97, 211, 148, .8);
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 92px);
+      letter-spacing: -0.075em;
+      line-height: .92;
+      max-width: 860px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: rgba(245,245,247,.68);
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.55;
+      margin-top: 24px;
+    }
+
+    .search-panel {
+      margin-top: 34px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.075);
+      border-radius: 28px;
+      padding: 10px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 720px;
+    }
+
+    .search-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      color: rgba(245,245,247,.72);
+      flex: 0 0 auto;
+    }
+
+    .search-panel input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 16px;
+      padding: 0 4px;
+    }
+
+    .search-panel input::placeholder {
+      color: rgba(245,245,247,.38);
+    }
+
+    .hero-card {
+      min-height: 480px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.035)),
+        rgba(255,255,255,.045);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .orb {
+      position: absolute;
+      right: -120px;
+      top: -90px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(138,180,255,.58), transparent 62%);
+      filter: blur(4px);
+    }
+
+    .support-window {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .window-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .traffic {
+      display: flex;
+      gap: 7px;
+    }
+
+    .traffic span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.22);
+    }
+
+    .status-mini {
+      font-size: 12px;
+      color: rgba(245,245,247,.72);
+    }
+
+    .agent-card,
+    .ticket-card,
+    .metric-card {
+      border: 1px solid var(--line-soft);
+      background: rgba(0,0,0,.22);
+      border-radius: 22px;
+      padding: 16px;
+    }
+
+    .agent-card {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 19px;
+      background: linear-gradient(145deg, #fff, #8ab4ff 45%, #101014);
+      display: grid;
+      place-items: center;
+      color: #050505;
+      font-weight: 900;
+      box-shadow: 0 0 34px rgba(138,180,255,.28);
+      flex: 0 0 auto;
+    }
+
+    .agent-card strong,
+    .ticket-card strong,
+    .metric-card strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .agent-card span,
+    .ticket-card span,
+    .metric-card span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .ticket-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 2px;
+    }
+
+    .ticket-card {
+      min-height: 120px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .metric-card b {
+      display: block;
+      font-size: 28px;
+      letter-spacing: -0.05em;
+      margin-bottom: 6px;
+    }
+
+    section {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 44px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line-soft);
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      min-height: 210px;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--card-strong);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -70px auto;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.07);
+      filter: blur(1px);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--line-soft);
+      margin-bottom: 28px;
+      font-size: 20px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.52;
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .status-panel,
+    .contact-panel {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: 0 18px 70px rgba(0,0,0,.32);
+    }
+
+    .status-panel h2,
+    .contact-panel h2 {
+      font-size: 34px;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
+    }
+
+    .status-good {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(97, 211, 148, .10);
+      border: 1px solid rgba(97, 211, 148, .22);
+      margin: 18px 0;
+    }
+
+    .status-good b {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .status-good span {
+      color: rgba(245,245,247,.68);
+      font-size: 13px;
+    }
+
+    .service-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .service {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--line-soft);
+      padding: 12px 0;
+      color: rgba(245,245,247,.86);
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(97, 211, 148, .11);
+      color: #9ff0bf;
+      border: 1px solid rgba(97, 211, 148, .18);
+      font-size: 12px;
+      min-width: max-content;
+    }
+
+    .form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .form .full {
+      grid-column: 1 / -1;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      color: rgba(245,245,247,.72);
+      font-size: 13px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      border: 1px solid var(--line-soft);
+      outline: none;
+      color: var(--text);
+      background: rgba(0,0,0,.22);
+      border-radius: 16px;
+      padding: 13px 14px;
+      resize: vertical;
+    }
+
+    .field textarea {
+      min-height: 126px;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: rgba(255,255,255,.28);
+      box-shadow: 0 0 0 4px rgba(255,255,255,.055);
+    }
+
+    .faq {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border: 1px solid var(--line-soft);
+      background: rgba(255,255,255,.045);
+      border-radius: 20px;
+      padding: 18px 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p {
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .footer {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 48px 0 34px;
+      border-top: 1px solid var(--line-soft);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      color: rgba(245,245,247,.55);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer a:hover {
+      color: var(--text);
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      max-width: 360px;
+      border: 1px solid var(--line);
+      background: rgba(12,12,15,.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 20px;
+      padding: 15px 16px;
+      color: rgba(245,245,247,.82);
+      box-shadow: var(--shadow);
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all .25s ease;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 420px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .navlinks {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        height: 66px;
+        width: min(100% - 24px, var(--max));
+      }
+
+      .brand-title span,
+      .nav-actions .pill:not(.primary) {
+        display: none;
+      }
+
+      .hero,
+      section,
+      .footer {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .search-panel {
+        border-radius: 22px;
+      }
+
+      .hero-card {
+        padding: 16px;
+      }
+
+      .ticket-grid,
+      .metric-row,
+      .cards,
+      .form,
+      .footer {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: grid;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Suporte Lukintosh</h1>
-  <p>Estamos aqui para ajudar você!</p>
-</header>
+  <div class="noise" aria-hidden="true"></div>
 
-<main>
-  <section>
-    <h2>Perguntas Frequentes</h2>
-    <details>
-      <summary>Como posso criar uma conta Lukintosh?</summary>
-      <p>Você pode criar uma conta acessando <a href="https://accounts.lukintosh.com">accounts.lukintosh.com</a> e seguindo as instruções de cadastro.</p>
-    </details>
-    <details>
-      <summary>Como faço para baixar jogos no Lukintosh Store?</summary>
-      <p>Após criar sua conta, acesse <a href="https://store.lukintosh.com">store.lukintosh.com</a>, faça login e escolha o jogo que deseja baixar.</p>
-    </details>
-    <details>
-      <summary>Posso usar a Lukintosh Play Engine para criar jogos comerciais?</summary>
-      <p>Sim! A Lukintosh Play Engine é totalmente liberada para uso comercial e pessoal. Consulte nossa documentação para detalhes de licença.</p>
-    </details>
-  </section>
+  <div class="shell">
+    <header class="topbar">
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#top" class="brand" aria-label="Lukintosh Support Home">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="brand-title">
+            <strong>Lukintosh Support</strong>
+            <span>Official Help Center</span>
+          </div>
+        </a>
 
-  <section>
-    <h2>Contato</h2>
-    <form>
-      <label for="name">Nome Completo</label>
-      <input type="text" id="name" name="name" placeholder="Seu nome" required />
+        <div class="navlinks" aria-label="Links de suporte">
+          <a href="#products">Produtos</a>
+          <a href="#status">Status</a>
+          <a href="#contact">Contato</a>
+          <a href="#faq">FAQ</a>
+        </div>
 
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+        <div class="nav-actions">
+          <a class="pill" href="https://lukintosh.com/trust">Trust</a>
+          <a class="pill primary" href="#contact">Abrir chamado</a>
+        </div>
+      </nav>
+    </header>
 
-      <label for="message">Mensagem</label>
-      <textarea id="message" name="message" placeholder="Escreva sua dúvida ou sugestão" required></textarea>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Support systems operational</div>
+          <h1 id="hero-title">Suporte rápido, seguro e oficial.</h1>
+          <p>
+            Encontre ajuda para contas, produtos, segurança, serviços online, desenvolvedores e infraestrutura Lukintosh. Um centro de suporte com visual corporativo, simples e pronto para escalar.
+          </p>
 
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-</main>
+          <div class="search-panel" role="search">
+            <div class="search-icon" aria-hidden="true">⌕</div>
+            <input id="supportSearch" type="search" placeholder="Pesquise por conta, login, segurança, domínio, status..." autocomplete="off" />
+            <button class="pill primary" id="searchButton">Buscar</button>
+          </div>
+        </div>
 
-<footer>
-  &copy; 2025 Lukintosh Corporation — Todos os direitos reservados
-</footer>
+        <aside class="hero-card" aria-label="Resumo de suporte">
+          <div class="orb" aria-hidden="true"></div>
+          <div class="support-window">
+            <div class="window-head">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="status-mini">Lukintosh Care Console</div>
+            </div>
+
+            <div class="agent-card">
+              <div class="avatar">L</div>
+              <div>
+                <strong>Assistência corporativa</strong>
+                <span>Central para clientes, desenvolvedores, parceiros e equipes internas.</span>
+              </div>
+            </div>
+
+            <div class="ticket-grid">
+              <div class="ticket-card">
+                <strong>Account Recovery</strong>
+                <span>Recupere acesso, revise login suspeito e valide identidade.</span>
+              </div>
+              <div class="ticket-card">
+                <strong>Security Desk</strong>
+                <span>Reporte vulnerabilidades, abuso de domínio ou phishing.</span>
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="metric-card">
+                <b>24/7</b>
+                <span>monitoramento</span>
+              </div>
+              <div class="metric-card">
+                <b>A+</b>
+                <span>security posture</span>
+              </div>
+              <div class="metric-card">
+                <b>DNS</b>
+                <span>domain verified</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="products" aria-labelledby="products-title">
+        <div class="section-head">
+          <h2 id="products-title">Como podemos ajudar?</h2>
+          <p>Escolha uma categoria. O suporte deve parecer simples para o usuário, mas por trás precisa ter processo, segurança e rastreabilidade.</p>
+        </div>
+
+        <div class="cards" id="supportCards">
+          <article class="card" data-keywords="conta login senha autenticação email lukintosh account">
+            <div class="icon">◐</div>
+            <h3>Contas e login</h3>
+            <p>Ajuda com senha, código de verificação, sessão, e-mail corporativo e recuperação de conta.</p>
+          </article>
+
+          <article class="card" data-keywords="segurança phishing abuse dns dmarc spf dkim bimi trust">
+            <div class="icon">◆</div>
+            <h3>Segurança</h3>
+            <p>Reporte phishing, domínios falsos, vulnerabilidades e incidentes de segurança.</p>
+          </article>
+
+          <article class="card" data-keywords="desenvolvedor api sdk cloud github documentação developer">
+            <div class="icon">⌘</div>
+            <h3>Developers</h3>
+            <p>Suporte para APIs, SDKs, integrações, apps, chaves, tokens e documentação técnica.</p>
+          </article>
+
+          <article class="card" data-keywords="status uptime serviço cloud site servidor incidente manutenção">
+            <div class="icon">●</div>
+            <h3>Status de serviços</h3>
+            <p>Veja disponibilidade de contas, site, cloud, autenticação, downloads e produtos online.</p>
+          </article>
+
+          <article class="card" data-keywords="billing pagamento nota fiscal plano assinatura compra reembolso">
+            <div class="icon">◫</div>
+            <h3>Pagamentos</h3>
+            <p>Planos, cobranças, recibos, notas, reembolsos e dúvidas de assinatura.</p>
+          </article>
+
+          <article class="card" data-keywords="hardware neutron nv26 pc dispositivo garantia reparo">
+            <div class="icon">▣</div>
+            <h3>Hardware</h3>
+            <p>Ajuda para dispositivos Lukintosh, garantia, diagnóstico, reparo e documentação.</p>
+          </article>
+
+          <article class="card" data-keywords="empresa enterprise cnpj duns parceria contrato compliance legal">
+            <div class="icon">▰</div>
+            <h3>Enterprise</h3>
+            <p>Suporte para organizações, compliance, parcerias, contratos e validações corporativas.</p>
+          </article>
+
+          <article class="card" data-keywords="privacy dados lgpd termos legal privacidade segurança">
+            <div class="icon">◇</div>
+            <h3>Privacidade</h3>
+            <p>Solicitações de dados, LGPD, termos, políticas, exclusão e transparência.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="status" aria-labelledby="status-title">
+        <div class="split">
+          <div class="status-panel">
+            <h2 id="status-title">Status global</h2>
+            <p style="color: var(--muted); line-height: 1.55;">Resumo visual para mostrar maturidade operacional. Depois você pode conectar isso a uma API real ou página UptimeRobot/Better Stack.</p>
+
+            <div class="status-good">
+              <span class="dot"></span>
+              <div>
+                <b>Todos os sistemas operacionais</b>
+                <span>Última atualização: <span id="lastUpdated">agora</span></span>
+              </div>
+            </div>
+
+            <div class="service-list">
+              <div class="service"><span>Lukintosh.com</span><span class="badge">● Online</span></div>
+              <div class="service"><span>Accounts</span><span class="badge">● Online</span></div>
+              <div class="service"><span>Support Center</span><span class="badge">● Online</span></div>
+              <div class="service"><span>Developer APIs</span><span class="badge">● Online</span></div>
+              <div class="service"><span>Security & Trust</span><span class="badge">● Online</span></div>
+            </div>
+          </div>
+
+          <div class="contact-panel" id="contact">
+            <h2>Abrir chamado</h2>
+            <p style="color: var(--muted); line-height: 1.55;">Este formulário está em modo front-end. Para produção, conecte com Formspree, Resend, backend Node/PHP ou painel interno.</p>
+
+            <form class="form" id="ticketForm">
+              <div class="field">
+                <label for="name">Nome</label>
+                <input id="name" name="name" type="text" placeholder="Seu nome" required />
+              </div>
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required />
+              </div>
+              <div class="field full">
+                <label for="category">Categoria</label>
+                <select id="category" name="category" required>
+                  <option value="">Selecione uma categoria</option>
+                  <option>Contas e login</option>
+                  <option>Segurança</option>
+                  <option>Developers</option>
+                  <option>Status de serviços</option>
+                  <option>Pagamentos</option>
+                  <option>Hardware</option>
+                  <option>Enterprise</option>
+                  <option>Privacidade</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" placeholder="Descreva o problema com detalhes..." required></textarea>
+              </div>
+              <div class="full">
+                <button class="pill primary" type="submit">Enviar solicitação</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" aria-labelledby="faq-title">
+        <div class="section-head">
+          <h2 id="faq-title">Perguntas frequentes</h2>
+          <p>FAQ inicial para dar aparência real de central corporativa. Troque os textos conforme os produtos ficarem prontos.</p>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>Como recuperar minha conta Lukintosh?</summary>
+            <p>Use a página de recuperação da conta, confirme seu e-mail e revise alertas de login. Em caso de atividade suspeita, altere sua senha e encerre sessões antigas.</p>
+          </details>
+
+          <details>
+            <summary>Como reportar phishing usando o nome Lukintosh?</summary>
+            <p>Envie o domínio, prints, e-mails recebidos e links suspeitos para a equipe de segurança. Nunca envie senhas ou códigos de verificação.</p>
+          </details>
+
+          <details>
+            <summary>Onde vejo se algum serviço está fora do ar?</summary>
+            <p>Use a área de status deste site ou conecte uma página dedicada como status.lukintosh.com com monitoramento real.</p>
+          </details>
+
+          <details>
+            <summary>Sou desenvolvedor. Onde encontro APIs e SDKs?</summary>
+            <p>A seção Developers deve apontar para documentação, dashboard de apps, chaves de API, status de endpoints e changelog.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong style="color: var(--text);">Lukintosh Support</strong><br />
+        © <span id="year"></span> Lukintosh. Support, Trust, Security and Privacy resources.
+      </div>
+      <div class="footer-links">
+        <a href="https://lukintosh.com">Lukintosh.com</a>
+        <a href="https://lukintosh.com/security">Security</a>
+        <a href="https://lukintosh.com/privacy">Privacy</a>
+        <a href="https://lukintosh.com/trust">Trust</a>
+        <a href="mailto:support@lukintosh.com">support@lukintosh.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const year = document.getElementById('year');
+    const lastUpdated = document.getElementById('lastUpdated');
+    const searchInput = document.getElementById('supportSearch');
+    const searchButton = document.getElementById('searchButton');
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const toast = document.getElementById('toast');
+    const form = document.getElementById('ticketForm');
+
+    year.textContent = new Date().getFullYear();
+    lastUpdated.textContent = new Intl.DateTimeFormat('pt-BR', {
+      dateStyle: 'short',
+      timeStyle: 'short'
+    }).format(new Date());
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 4200);
+    }
+
+    function runSearch() {
+      const query = searchInput.value.trim().toLowerCase();
+      let matches = 0;
+
+      cards.forEach(card => {
+        const text = (card.textContent + ' ' + card.dataset.keywords).toLowerCase();
+        const found = !query || text.includes(query);
+        card.classList.toggle('hidden', !found);
+        if (found) matches++;
+      });
+
+      if (query) {
+        showToast(matches ? `${matches} resultado(s) encontrado(s).` : 'Nenhum resultado encontrado. Tente outro termo.');
+        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    searchButton.addEventListener('click', runSearch);
+    searchInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter') runSearch();
+    });
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.querySelector('h3').textContent;
+        const category = document.getElementById('category');
+        category.value = title;
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        showToast(`Categoria selecionada: ${title}`);
+      });
+    });
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const ticketId = 'LKS-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+
+      console.table(Object.fromEntries(data.entries()));
+      showToast(`Solicitação criada em modo demo: ${ticketId}. Conecte este formulário ao backend para produção.`);
+      form.reset();
+    });
+  </script>
 </body>
 </html>
